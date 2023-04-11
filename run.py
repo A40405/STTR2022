@@ -125,7 +125,7 @@ def get_args_parser():
     parser.add_argument('--coco_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
-    parser.add_argument('--output_dir', default="output_nofold_fix512",
+    parser.add_argument('--output_dir', default="outputs",
                         help='path where to save, empty for no saving')
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
@@ -142,7 +142,7 @@ def get_args_parser():
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
     return parser
 
-def main(args,video_frames_path,styles_path):
+def main(args):
     utils.init_distributed_mode(args)
     
     output_dir = Path(args.output_dir)
@@ -195,9 +195,6 @@ def main(args,video_frames_path,styles_path):
     lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, args.lr_drop)
 
     dataset_val = build_dataset('val', args)
-
-    print(video_frames_path,styles_path)
-    print(len(dataset_val ))
     
     
     if args.distributed:
