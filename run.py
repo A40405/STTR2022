@@ -194,7 +194,7 @@ def main(args):
                                   weight_decay=args.weight_decay)
     lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, args.lr_drop)
 
-    dataset_val = build_dataset('val', args)
+    dataset_val = build_dataset('test', args)
     
     
     if args.distributed:
