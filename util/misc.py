@@ -151,7 +151,6 @@ class MetricLogger(object):
         iter_time = SmoothedValue(fmt='{avg:.4f}')
         data_time = SmoothedValue(fmt='{avg:.4f}')
         space_fmt = ':' + str(len(str(len(iterable)))) + 'd'
-        print("Hello-----------------------------------", type(iterable))
         if torch.cuda.is_available():
             log_msg = self.delimiter.join([
                 header,

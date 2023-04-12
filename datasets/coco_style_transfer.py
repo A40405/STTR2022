@@ -32,7 +32,7 @@ class CocoStyleTransfer(torchvision.datasets.CocoDetection):
             Tr.Normalize(self.mean, self.std)
         ])
         content_images = glob.glob(str(content_folder) + '/*')
-        content_images = [os.path.normpath(path) for path in style_images]
+        content_images = [os.path.normpath(path) for path in content_images]
         
         print("len(content_images),len(style_images):",len(content_images),len(style_images))
         self.images_pairs = [[x,y] for x in content_images for y in style_images ] 
