@@ -98,7 +98,7 @@ class Backbone_50(BackboneBase):
                  dilation: bool):
         backbone = getattr(torchvision.models, name)(
             replace_stride_with_dilation=[False, False, dilation],
-            weights='imagenet', norm_layer=FrozenBatchNorm2d)
+            weights=is_main_process(), norm_layer=FrozenBatchNorm2d)
         num_channels = 512 if name in ('resnet18', 'resnet34') else 2048
         super().__init__(backbone,backbone_layer, train_backbone, num_channels, return_interm_layers)
 
