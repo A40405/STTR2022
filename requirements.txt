@@ -1,0 +1,4 @@
+colabcode
+fastapi
+python-multipart
+git+https://github.com/cocodataset/panopticapi.git
