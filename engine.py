@@ -14,7 +14,6 @@ def save_batch_images(save_path,outputs,samples,style_images,epoch,it,device):
     outputs=denorm(outputs, device)
     samples.tensors=denorm(samples.tensors, device)
     style_images.tensors=denorm(style_images.tensors, device)
-#             print("outputs.shape:",outputs.shape)
     save_image(outputs,os.path.join(save_path,"test_outputs",f'{epoch:04}',f'{epoch:04}_{it:08}.png' )  )  
     save_image(samples.tensors,os.path.join(save_path,"test_content_images",f'{epoch:04}',f'{epoch:04}_{it:08}.png' )  )  
     save_image(style_images.tensors,os.path.join(save_path,"test_style_images",f'{epoch:04}',f'{epoch:04}_{it:08}.png' )  ) 
@@ -24,7 +23,6 @@ def test_st(model, criterion, postprocessors, data_loader,  device, logger,epoch
     criterion.eval()
 
     metric_logger = MetricLogger(delimiter="  ")
-#     metric_logger.add_meter('class_error', SmoothedValue(window_size=1, fmt='{value:.2f}'))
     header = 'Test:'
 
     iou_types = tuple(k for k in ('segm', 'bbox') if k in postprocessors.keys())
